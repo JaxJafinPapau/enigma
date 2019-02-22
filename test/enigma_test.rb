@@ -2,10 +2,10 @@ require './test/test_helper'
 
 class EnigmaTest < Minitest::Test
   def setup
-
+    @enigma = Enigma.new
   end
 
-  def test_test
-    assert_equal "", ""
+  def test_enigma_exists
+    assert_instance_of Enigma, @enigma
   end
 end
