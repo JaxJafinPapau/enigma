@@ -13,11 +13,10 @@ class EnigmaTest < Minitest::Test
     assert_equal "hello world", @enigma.message
     assert_equal "02715", @enigma.key
     assert_equal "040895", @enigma.date
+    assert_equal "abcdefghijklmnopqrstuvwxyz ", @enigma.alphabet
   end
 
   def test_enigma_can_encrypt_message
-    x = Date.today
-    binding.pry
     expected = {
                 encryption: "keder ohulw",
                 key: "02715",
@@ -29,5 +28,9 @@ class EnigmaTest < Minitest::Test
   def test_enigma_can_get_current_date
     expected = DateTime.now.day.to_s.rjust(2, "0") + DateTime.now.month.to_s.rjust(2, "0") + DateTime.now.year.to_s
     assert_equal expected, @enigma.date_getter
+  end
+
+  def test_enigma_can
+
   end
 end
