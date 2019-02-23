@@ -2,7 +2,7 @@ require './test/test_helper'
 
 class EnigmaTest < Minitest::Test
   def setup
-    @enigma = Enigma.new("keder ohulw", "02715", "040895")
+    @enigma = Enigma.new("hello world", "02715", "040895")
   end
 
   def test_enigma_exists
@@ -32,6 +32,11 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_can_generate_keys
-    assert_equal 5, @enigma.generate_key
+    assert_instance_of String, @enigma.generate_key
+    assert_equal 5, @enigma.generate_key.length
+  end
+
+  def test_enigma_can_get_shifts
+
   end
 end
