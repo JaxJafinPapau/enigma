@@ -10,12 +10,25 @@ class Enigma
     @alphabet = [*("a".."z")].join + " "
   end
 
-  def encrypt(message, key, date)
-    message.chars.each do ||
-      next if character.nil?
-      character
+  def encrypt(message = @message, key = @key, date = @date)
+    message_letters = message.chars
+    encrypted_letters = []
+    ((message_letters.count / 4) + 1).times do
+      message_letters.shift(4).map.with_index do |character, index|
+        next if character.nil?
+        encrypted_letters << @alphabet[rotated_index(character, index)]
+      end
     end
-    #get encrypt working no matter how long, then refactor
+    {encryption: encrypted_letters.join, key: key, date: date}
+  end
+
+  def rotated_index(character, index)
+    shifts = [a_shift, b_shift, c_shift, d_shift]
+    (@alphabet.index(character) + shifts[index]) % 27
+  end
+
+  def alpha_rotator(shift)
+    alphabet.chars.rotate(shift * -1).join
   end
 
   def date_getter
