@@ -3,19 +3,22 @@ class Enigma
               :key,
               :date,
               :alphabet
-  def initialize
-    @message = "hello world"
-    @key = "02715"
-    @date = "040895"
+  def initialize(message, key, date = DateTime.new)
+    @message = message
+    @key = key
+    @date = date
     @alphabet = [*("a".."z")].join + " "
   end
 
   def encrypt(message, key, date)
+    message.chars.each do ||
+      next if character.nil?
+      character
+    end
+    #get encrypt working no matter how long, then refactor
   end
 
   def date_getter
-    DateTime.now.day.to_s.rjust(2, "0") +
-    DateTime.now.month.to_s.rjust(2, "0") +
-    DateTime.now.year.to_s
+    @date.strftime("%d%m%y")
   end
 end
