@@ -52,4 +52,9 @@ class EnigmaTest < Minitest::Test
   def test_enigma_can_find_rotated_index
     assert_equal 10, @enigma.rotated_index("h", 0)
   end
+
+  def test_enigma_can_loop_through_letters
+    expected = "keder ohulw".split("")
+    assert_equal expected, @enigma.letter_looper("hello world")
+  end
 end
