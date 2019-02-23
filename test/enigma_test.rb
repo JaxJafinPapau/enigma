@@ -24,7 +24,7 @@ class EnigmaTest < Minitest::Test
                 key: "02715",
                 date: "040895"
               }
-    assert_equal expected, @enigma.encrypt
+    assert_equal expected, @enigma.encrypt()
   end
 
   def test_enigma_can_get_current_date
@@ -54,6 +54,6 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_can_find_rotated_index
-    assert_equal 0 @enigma.rotated_index("x")
+    assert_equal 10, @enigma.rotated_index("h", 0)
   end
 end
