@@ -26,4 +26,20 @@ class Enigma
     possible_keys = [*(0..99999)]
     possible_keys.sample.to_s.rjust(5, '0')
   end
+
+  def a_shift
+    @key[0..1].to_i
+  end
+
+  def b_shift
+    @key[1..2].to_i
+  end
+
+  def c_shift
+    @key[2..3].to_i
+  end
+
+  def d_shift
+    @key[3..4].to_i
+  end
 end
