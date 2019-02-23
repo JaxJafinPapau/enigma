@@ -10,10 +10,12 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_has_attributes
+    enigma = Enigma.new("hello world")
     assert_equal "hello world", @enigma.message
     assert_equal "02715", @enigma.key
     assert_equal "040895", @enigma.date
     assert_equal "abcdefghijklmnopqrstuvwxyz ", @enigma.alphabet
+    assert_equal 5, enigma.key.length
   end
 
   # def test_enigma_can_encrypt_message

@@ -3,7 +3,7 @@ class Enigma
               :key,
               :date,
               :alphabet
-  def initialize(message, key, date = DateTime.new)
+  def initialize(message, key = generate_key, date = DateTime.new)
     @message = message
     @key = key
     @date = date
