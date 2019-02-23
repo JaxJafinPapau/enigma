@@ -31,7 +31,7 @@ class EnigmaTest < Minitest::Test
     assert_equal 6, enigma.date_getter.length
   end
 
-  def test_enigma_can
-
+  def test_enigma_can_generate_keys
+    assert_equal 5, @enigma.generate_key
   end
 end
