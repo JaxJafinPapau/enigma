@@ -10,16 +10,20 @@ class Enigma
     @alphabet = [*("a".."z")].join + " "
   end
 
-  def encrypt(message = @message, key = @key, date = @date)
-    message_letters = message.chars
+  # def encrypt(message = @message, key = @key, date = @date)
+  #   {encryption: encrypted_letters.join, key: key, date: date}
+  # end
+
+  def letter_looper(message)
     encrypted_letters = []
-    ((message_letters.count / 4) + 1).times do
+    message_letters = message.chars
+    ((message.length / 4) + 1).times do
       message_letters.shift(4).map.with_index do |character, index|
         next if character.nil?
         encrypted_letters << @alphabet[rotated_index(character, index)]
       end
     end
-    {encryption: encrypted_letters.join, key: key, date: date}
+    encrypted_letters
   end
 
   def rotated_index(character, index)
