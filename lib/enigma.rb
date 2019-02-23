@@ -27,10 +27,6 @@ class Enigma
     (@alphabet.index(character) + shifts[index]) % 27
   end
 
-  def alpha_rotator(shift)
-    alphabet.chars.rotate(shift * -1).join
-  end
-
   def date_getter
     @date.strftime("%d%m%y")
   end

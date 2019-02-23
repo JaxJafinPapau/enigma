@@ -49,10 +49,6 @@ class EnigmaTest < Minitest::Test
     assert_equal "1025", @enigma.offset
   end
 
-  def test_alpha_rotator_can_rotate_alphabet
-    assert_equal "x", @enigma.alpha_rotator(04)[0]
-  end
-
   def test_enigma_can_find_rotated_index
     assert_equal 10, @enigma.rotated_index("h", 0)
   end
