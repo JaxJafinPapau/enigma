@@ -29,8 +29,9 @@ class EnigmaTest < Minitest::Test
 
   def test_enigma_can_get_current_date
     enigma = Enigma.new("hello world", "02715")
-    assert_instance_of DateTime, enigma.date
     assert_equal 6, enigma.date_getter.length
+    assert_instance_of String, enigma.date_getter
+    assert_instance_of Integer, enigma.date_getter.to_i
   end
 
   def test_enigma_can_generate_keys
@@ -73,6 +74,12 @@ class EnigmaTest < Minitest::Test
   def test_enigma_can_encrypt_with_random_date_and_key
     enigma = Enigma.new("hello world")
     encrypted_message = enigma.encrypt
+    decrypted_message = enigma.decrypt(
+      encrypted_message[:encryption],
+      encrypted_message[:key],
+      encrypted_message[:date]
+      )[:decryption]
     assert_equal 11, encrypted_message[:encryption].length
+    assert_equal "hello world", decrypted_message
   end
 end

@@ -3,7 +3,7 @@ class Enigma
               :key,
               :date,
               :alphabet
-  def initialize(message, key = generate_key, date = DateTime.new)
+  def initialize(message, key = generate_key, date = date_getter)
     @message = message
     @key = key
     @date = date
@@ -24,9 +24,7 @@ class Enigma
     encrypted_letters = []
     message_letters = message.chars
     ((message.length / 4) + 1).times do
-      message_letters.shift(4).map.with_index do |character, index|
-        encrypted_letters << @alphabet[(rotated_index(character, index, direction))]
-      end
+      message_letters.shift(4).map.with_index {|character, index| encrypted_letters << @alphabet[(rotated_index(character, index, direction))]}
     end
     encrypted_letters.compact
   end
@@ -38,7 +36,7 @@ class Enigma
   end
 
   def date_getter
-    @date.strftime("%d%m%y")
+    @date = DateTime.now.strftime("%d%m%y")
   end
 
   def generate_key
@@ -63,7 +61,6 @@ class Enigma
   end
 
   def offset
-    binding.pry
     full_num = @date.to_i ** 2
     full_num.to_s[-4..-1]
   end
