@@ -50,18 +50,29 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_can_find_rotated_index
-    assert_equal 10, @enigma.rotated_index("h", 0)
+    assert_equal 10, @enigma.rotated_index("h", 0, "forward")
   end
 
   def test_enigma_can_loop_through_letters
     expected = "keder ohulw".split("")
-    assert_equal expected, @enigma.letter_looper("hello world")
+    assert_equal expected, @enigma.letter_looper("hello world", "forward")
   end
 
   def test_enigma_can_decrypt
     message = "keder ohulw"
     key = "02715"
     date = "040895"
-    assert_equal "hello world", @enigma.decrypt(message, key, date)
+    expected = {
+                decryption: "hello world",
+                key: key,
+                date: date
+                }
+    assert_equal expected, @enigma.decrypt(message, key, date)
+  end
+
+  def test_enigma_can_encrypt_with_random_date_and_key
+    enigma = Enigma.new("hello world")
+    encrypted_message = enigma.encrypt
+    assert_equal 11, encrypted_message[:encryption].length
   end
 end
