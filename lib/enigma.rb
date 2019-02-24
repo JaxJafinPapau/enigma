@@ -10,24 +10,30 @@ class Enigma
     @alphabet = [*("a".."z")].join + " "
   end
 
-  # def encrypt(message = @message, key = @key, date = @date)
-  #   {encryption: encrypted_letters.join, key: key, date: date}
-  # end
+  def encrypt(message = @message, key = @key, date = @date)
+    encrypted_message = letter_looper(message, "forward").join
+    {encryption: encrypted_message, key: key, date: date}
+  end
 
-  def letter_looper(message)
+  def decrypt(message, key, date)
+    decrypted_message = letter_looper(message, "backward").join
+    {decryption: decrypted_message, key: key, date: date}
+  end
+
+  def letter_looper(message, direction)
     encrypted_letters = []
     message_letters = message.chars
     ((message.length / 4) + 1).times do
       message_letters.shift(4).map.with_index do |character, index|
-        next if character.nil?
-        encrypted_letters << @alphabet[rotated_index(character, index)]
+        encrypted_letters << @alphabet[(rotated_index(character, index, direction))]
       end
     end
-    encrypted_letters
+    encrypted_letters.compact
   end
 
-  def rotated_index(character, index)
-    shifts = [a_shift, b_shift, c_shift, d_shift]
+  def rotated_index(character, index, direction)
+    direction == "forward" ? x = 1 : x = -1
+    shifts = [a_shift * x, b_shift * x, c_shift * x, d_shift * x]
     (@alphabet.index(character) + shifts[index]) % 27
   end
 
@@ -57,6 +63,7 @@ class Enigma
   end
 
   def offset
+    binding.pry
     full_num = @date.to_i ** 2
     full_num.to_s[-4..-1]
   end
