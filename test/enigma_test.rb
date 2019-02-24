@@ -21,7 +21,7 @@ class EnigmaTest < Minitest::Test
   def test_enigma_can_encrypt_message
     expected = {
                 encryption: "keder ohulw",
-                key: "02715",
+                 key: "02715",
                 date: "040895"
               }
     assert_equal expected, @enigma.encrypt()
@@ -56,5 +56,14 @@ class EnigmaTest < Minitest::Test
   def test_enigma_can_loop_through_letters
     expected = "keder ohulw".split("")
     assert_equal expected, @enigma.letter_looper("hello world")
+  end
+
+  def test_enigma_can_decrypt
+    message = {
+                encryption: "keder ohulw",
+                 key: "02715",
+                date: "040895"
+              }
+    assert_equal "hello world", @enigma.decrypt(message)
   end
 end
