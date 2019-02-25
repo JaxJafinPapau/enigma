@@ -1,7 +1,9 @@
 require './lib/shift_generator'
+require './lib/letter_looper'
 
 class Enigma
   include ShiftGenerator
+  include LetterLooper
 
   attr_reader :message,
               :key,
