@@ -11,4 +11,11 @@ class Interface
       "Enter 'D' to add a custom date\n" +
       "Enter 'K' to add a custom key."
   end
+
+  def decryption_menu
+    p "Decryption Menu:\n" +
+      "Enter a message to decrypt\n" +
+      "Enter 'D' to add a custom date\n" +
+      "Enter 'K' to add a custom key."
+  end
 end
