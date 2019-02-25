@@ -28,7 +28,6 @@ class Enigma
   def letter_looper(message, direction)
     encrypted_letters = []
     message_letters = message.chars
-
     symbols = message_letters.map.with_index do |character, index|
       if @alphabet.include?(character) == false
         [character, index]
