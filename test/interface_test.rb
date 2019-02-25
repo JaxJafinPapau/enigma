@@ -15,4 +15,12 @@ class InterfaceTest < Minitest::Test
                "Enter (e) to encrypt or (d) to decrypt."
     assert_equal expected, @interface.welcome
   end
+
+  def test_interface_can_display_encryption_menu
+    expected = "Encryption Menu:\n" +
+               "Enter a message to encrypt\n" +
+               "Enter 'D' to add a custom date\n" +
+               "Enter 'K' to add a custom key."
+    assert_equal expected, @interface.encryption_menu
+  end
 end
