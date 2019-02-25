@@ -2,7 +2,7 @@ require './test/test_helper'
 
 class EnigmaTest < Minitest::Test
   def setup
-    @enigma = Enigma.new("hello world", "02715", "040895")
+    @enigma = Enigma.new("hello world.", "02715", "040895")
   end
 
   def test_enigma_exists
@@ -11,7 +11,7 @@ class EnigmaTest < Minitest::Test
 
   def test_enigma_has_attributes
     enigma = Enigma.new("hello world")
-    assert_equal "hello world", @enigma.message
+    assert_equal "hello world.", @enigma.message
     assert_equal "02715", @enigma.key
     assert_equal "040895", @enigma.date
     assert_equal "abcdefghijklmnopqrstuvwxyz ", @enigma.alphabet
@@ -20,7 +20,7 @@ class EnigmaTest < Minitest::Test
 
   def test_enigma_can_encrypt_message
     expected = {
-                encryption: "keder ohulw",
+                encryption: "keder ohulw.",
                  key: "02715",
                 date: "040895"
               }
