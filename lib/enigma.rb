@@ -7,7 +7,7 @@ class Enigma
               :key,
               :date,
               :alphabet
-              
+
   def initialize(message, key = generate_key, date = date_getter)
     @message = message
     @key = key
@@ -28,8 +28,20 @@ class Enigma
   def letter_looper(message, direction)
     encrypted_letters = []
     message_letters = message.chars
+
+    symbols = message_letters.map.with_index do |character, index|
+      if @alphabet.include?(character) == false
+        [character, index]
+      end
+    end.compact
     ((message.length / 4) + 1).times do
-      message_letters.shift(4).map.with_index {|character, index| encrypted_letters << @alphabet[(rotated_index(character, index, direction))]}
+      message_letters.shift(4).map.with_index do |character, index|
+      next if @alphabet.include?(character) == false
+      encrypted_letters << @alphabet[(rotated_index(character, index, direction))]
+      end
+    end
+    symbols.each do |sym_ind|
+      encrypted_letters.insert(sym_ind[1], sym_ind[0])
     end
     encrypted_letters.compact
   end
