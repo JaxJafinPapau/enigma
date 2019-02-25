@@ -31,4 +31,12 @@ class InterfaceTest < Minitest::Test
                "Enter 'K' to add a custom key."
     assert_equal expected, @interface.decryption_menu
   end
+
+  def test_interface_conducts_exit_interview
+    expected = "Thank you for using Enigma for your encryption needs.\n" +
+               "Would you like to contine (e) encrypting?\n" +
+               "Would you like to continue (d) decrypting?\n" +
+               "Would you like to (x) exit?"
+    assert_equal expected, @interface.exit_interview
+  end
 end
