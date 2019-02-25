@@ -18,4 +18,11 @@ class Interface
       "Enter 'D' to add a custom date\n" +
       "Enter 'K' to add a custom key."
   end
+
+  def exit_interview
+    p "Thank you for using Enigma for your encryption needs.\n" +
+      "Would you like to contine (e) encrypting?\n" +
+      "Would you like to continue (d) decrypting?\n" +
+      "Would you like to (x) exit?"
+  end
 end
