@@ -8,13 +8,17 @@ class Enigma
   attr_reader :message,
               :key,
               :date,
-              :alphabet
+              :alphabet,
+              :message_letters,
+              :symbols
 
   def initialize(message, key = generate_key, date = date_getter)
     @message = message
     @key = key
     @date = date
     @alphabet = [*("a".."z")].join + " "
+    @message_letters = message.chars
+    @symbols = []
   end
 
   def encrypt(message = @message, key = @key, date = @date)
