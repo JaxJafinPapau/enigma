@@ -1,4 +1,7 @@
+require './lib/shift_generator'
+
 class Enigma
+  include ShiftGenerator
   attr_reader :message,
               :key,
               :date,
