@@ -18,7 +18,7 @@ module MessageManipulator
   def symbol_stripper(message)
     message.delete_if.with_index do |character, index|
       @symbols << [character, index] if @alphabet.include?(character) == false
-    end.compact
+    end
   end
 
   def symbol_adder(message)
