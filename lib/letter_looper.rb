@@ -1,20 +1,10 @@
 module LetterLooper
   def letter_looper(message, direction)
     encrypted_letters = []
-    message_letters = message.chars
-    symbols = message_letters.map.with_index do |character, index|
-      if @alphabet.include?(character) == false
-        [character, index]
-      end
-    end.compact
-    ((message.length / 4) + 1).times do
-      message_letters.shift(4).map.with_index do |character, index|
-      next if @alphabet.include?(character) == false
+    ((message.count / 4) + 1).times do
+      message.shift(4).map.with_index do |character, index|
       encrypted_letters << @alphabet[(rotated_index(character, index, direction))]
       end
-    end
-    symbols.each do |sym_ind|
-      encrypted_letters.insert(sym_ind[1], sym_ind[0])
     end
     encrypted_letters.compact
   end
@@ -23,5 +13,18 @@ module LetterLooper
     direction == "forward" ? x = 1 : x = -1
     shifts = [a_shift * x, b_shift * x, c_shift * x, d_shift * x]
     (@alphabet.index(character) + shifts[index]) % 27
+  end
+
+  def symbol_stripper(message)
+    message.delete_if.with_index do |character, index|
+      @symbols << [character, index] if @alphabet.include?(character) == false
+    end.compact
+  end
+
+  def symbol_adder(message)
+    @symbols.each do |symbol_index|
+      message.insert(symbol_index[1], symbol_index[0])
+    end
+    message
   end
 end
