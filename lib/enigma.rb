@@ -1,5 +1,6 @@
 require './lib/shift_generator'
 require './lib/message_manipulator'
+require 'date'
 
 class Enigma
   include ShiftGenerator
@@ -20,7 +21,7 @@ class Enigma
     @symbols = []
   end
 
-  def encrypt(message = @message, key = @key, date = @date)
+  def encrypt(message = @message, key = @key, date = date_getter)
     naked_message = symbol_stripper(message.chars)
     encrypted_message = letter_looper(naked_message, "forward")
     output = symbol_adder(encrypted_message).join
@@ -35,6 +36,6 @@ class Enigma
   end
 
   def date_getter
-    @date = DateTime.now.strftime("%d%m%y")
+    DateTime.now.strftime("%d%m%y")
   end
 end
