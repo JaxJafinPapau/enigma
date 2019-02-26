@@ -34,22 +34,6 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Integer, enigma.date_getter.to_i
   end
 
-  def test_enigma_can_generate_keys
-    assert_instance_of String, @enigma.generate_key
-    assert_equal 5, @enigma.generate_key.length
-  end
-
-  def test_enigma_can_get_shifts
-    assert_equal 03, @enigma.a_shift
-    assert_equal 27, @enigma.b_shift
-    assert_equal 73, @enigma.c_shift
-    assert_equal 20, @enigma.d_shift
-  end
-
-  def test_enigma_can_generate_offset
-    assert_equal "1025", @enigma.offset
-  end
-
   def test_enigma_can_decrypt
     message = "keder ohulw"
     key = "02715"
