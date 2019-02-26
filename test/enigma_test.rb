@@ -50,15 +50,6 @@ class EnigmaTest < Minitest::Test
     assert_equal "1025", @enigma.offset
   end
 
-  def test_enigma_can_find_rotated_index
-    assert_equal 10, @enigma.rotated_index("h", 0, "forward")
-  end
-
-  def test_enigma_can_loop_through_letters
-    expected = "keder ohulw".split("")
-    assert_equal expected, @enigma.letter_looper("hello world", "forward")
-  end
-
   def test_enigma_can_decrypt
     message = "keder ohulw"
     key = "02715"
