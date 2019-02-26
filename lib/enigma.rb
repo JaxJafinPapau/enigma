@@ -28,8 +28,10 @@ class Enigma
   end
 
   def decrypt(message, key, date)
-    decrypted_message = letter_looper("backward").join
-    {decryption: decrypted_message, key: key, date: date}
+    naked_message = symbol_stripper(message.chars)
+    decrypted_message = letter_looper(naked_message, "backward")
+    output = symbol_adder(decrypted_message).join
+    {decryption: output, key: key, date: date}
   end
 
   def date_getter
