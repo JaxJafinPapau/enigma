@@ -55,8 +55,9 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_enigma_can_loop_through_letters
+    message = "hello world"
     expected = "keder ohulw".split("")
-    assert_equal expected, @enigma.letter_looper("hello world", "forward")
+    assert_equal expected, @enigma.letter_looper(message.chars, "forward")
   end
 
   def test_enigma_can_decrypt
