@@ -33,8 +33,4 @@ class Enigma
     output = symbol_adder(decrypted_message).join
     {decryption: output, key: key, date: date}
   end
-
-  def date_getter
-    DateTime.now.strftime("%d%m%y")
-  end
 end
