@@ -10,7 +10,6 @@ class Enigma
               :key,
               :date,
               :alphabet,
-              :message_letters,
               :symbols
 
   def initialize(message, key = generate_key, date = date_getter)

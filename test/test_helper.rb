@@ -10,7 +10,6 @@ task :test do
  Dir.glob('./test/*_test.rb').each { |file| require file}
 end
 
-require 'pry'
 require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/enigma'
