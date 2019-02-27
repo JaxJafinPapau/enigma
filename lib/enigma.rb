@@ -1,11 +1,12 @@
 require './lib/shift_generator'
 require './lib/message_manipulator'
+require './lib/key_and_date_generator'
 require 'date'
 
 class Enigma
   include ShiftGenerator
   include MessageManipulator
-
+  include KeyAndDateGenerator
   attr_reader :message,
               :key,
               :date,
