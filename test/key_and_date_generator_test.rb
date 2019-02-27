@@ -11,4 +11,9 @@ class KeyAndDateGeneratorTest < Minitest::Test
       assert_instance_of String, enigma.date_getter
       assert_instance_of Integer, enigma.date_getter.to_i
   end
+
+  def test_enigma_can_generate_keys
+    assert_instance_of String, @enigma.generate_key
+    assert_equal 5, @enigma.generate_key.length
+  end
 end
