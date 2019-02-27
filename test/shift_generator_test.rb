@@ -5,11 +5,6 @@ class ShiftGeneratorTest < Minitest::Test
     @enigma = Enigma.new("hello world.", "02715", "040895")
   end
 
-  def test_enigma_can_generate_keys
-    assert_instance_of String, @enigma.generate_key
-    assert_equal 5, @enigma.generate_key.length
-  end
-
   def test_enigma_can_get_shifts
     assert_equal 03, @enigma.a_shift
     assert_equal 27, @enigma.b_shift

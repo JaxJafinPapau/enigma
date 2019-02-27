@@ -1,11 +1,12 @@
 require './lib/shift_generator'
 require './lib/message_manipulator'
+require './lib/key_and_date_generator'
 require 'date'
 
 class Enigma
   include ShiftGenerator
   include MessageManipulator
-
+  include KeyAndDateGenerator
   attr_reader :message,
               :key,
               :date,
@@ -32,9 +33,5 @@ class Enigma
     decrypted_message = letter_looper(naked_message, "backward")
     output = symbol_adder(decrypted_message).join
     {decryption: output, key: key, date: date}
-  end
-
-  def date_getter
-    DateTime.now.strftime("%d%m%y")
   end
 end
